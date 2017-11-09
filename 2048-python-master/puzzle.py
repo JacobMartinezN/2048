@@ -30,9 +30,9 @@ class GameGrid(Frame):
     def __init__(self):
         Frame.__init__(self)
 
-        self.grid()
-        self.master.title('2048')
-        self.master.bind("<Key>", self.key_down)
+        self.grid() # tkinter
+        self.master.title('2048') # tkinter
+        self.master.bind("<Key>", self.key_down) #tkinter
 
         #self.gamelogic = gamelogic
         self.commands = {   KEY_UP: up, KEY_DOWN: down, KEY_LEFT: left, KEY_RIGHT: right,
@@ -82,6 +82,7 @@ class GameGrid(Frame):
                     self.grid_cells[i][j].configure(text=str(new_number), bg=BACKGROUND_COLOR_DICT[new_number], fg=CELL_COLOR_DICT[new_number])
         self.update_idletasks()
 
+    ###################
     def move(self, s):
         dummy, done = self.commands[s](self.matrix)
         
@@ -106,7 +107,7 @@ class GameGrid(Frame):
                 if self.move(s) == 1:
                     continue
                 self.dfs()
-    
+    ########################
     def key_down(self, event):
 		
         key = repr(event.char)
