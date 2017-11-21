@@ -1,6 +1,7 @@
 from tkinter import *
 from logic import *
 from random import *
+import time
 
 SIZE = 500
 GRID_LEN = 4
@@ -35,8 +36,8 @@ class GameGrid(Frame):
         self.master.bind("<Key>", self.key_down) #tkinter
 
         #self.gamelogic = gamelogic
-        self.commands = {   KEY_UP: up, KEY_DOWN: down, KEY_LEFT: left, KEY_RIGHT: right,
-                            KEY_UP_ALT: up, KEY_DOWN_ALT: down, KEY_LEFT_ALT: left, KEY_RIGHT_ALT: right }
+        self.commands = {   KEY_UP: up, KEY_DOWN: down, KEY_LEFT: left, KEY_RIGHT: right}
+                            #KEY_UP_ALT: up, KEY_DOWN_ALT: down, KEY_LEFT_ALT: left, KEY_RIGHT_ALT: right }
 
         # Editado
         self.sequence = ["'w'", "'s'", "'a'", "'d'"]
@@ -115,9 +116,20 @@ class GameGrid(Frame):
         test = ["'q'"]
 
         if key == "'g'":
+            print("----------------")
             print("Generando Greedy")
-            self.Greedy()
+            self.greedy()
 
+        if key == "'h'":
+            print("----------------")
+            print("Generando Greedy")
+            while(game_state(self.matrix)=='not over'):
+                #time.sleep(2)
+                self.greedy()
+            
+        if key == "'n'":
+            print("----------------")
+            print("Numero maximo: ", numero_max(self.matrix))
 	######################
         if key in test:
             print("Generando DFS")
@@ -126,16 +138,27 @@ class GameGrid(Frame):
         if key in self.commands:
             self.move(key)
 
-    def Greedy(self):
-        pMax = [] #puntaje maximo
+    def moveT(self, s):
+        dummy, done = self.commands[s](self.matrix) 
+        return dummy
+    
+    def greedy(self):
+        #m_anterior = max_element(self.matrix)
+        m_anterior = numero_max(self.matrix)
+        print(m_anterior)
+        movimientos = []
         for c in self.commands:
-
-            
-            
+            if es_candidato(self.moveT(c), m_anterior):
+                movimientos.append(c)
+        if not movimientos:
+            print("Elegido al azar: ")
+            self.move(choice(list(self.commands.keys())))
+            print("Nuevo numero maximo: ", numero_max(self.matrix))
+        else:
+            print("Elegido al azar pero no tanto de : ", movimientos)
+            self.move(choice(movimientos))
+            print("Nuevo numero maximo: ", numero_max(self.matrix))
         
-        
-
-
     def generate_next(self):
         index = (self.gen(), self.gen())
         while self.matrix[index[0]][index[1]] != 0:

@@ -7,6 +7,71 @@
 # code easily while grading your problem set.
 from random import *
 
+indexes = {
+    0: 11,
+    2: 10,
+    4: 9,
+    8: 8,
+    16: 7,
+    32: 6,
+    64: 5,
+    128: 4,
+    256: 3,
+    512: 2,
+    1024: 1,
+    2048: 0
+}
+
+###########
+# Task 0a #
+###########
+
+def magic(numList):         # [1,2,3]
+    s = map(str, numList[:-1])   # ['1','2','3']
+    s = ''.join(s)          # '123'
+    s = int(s)              # 123
+    return s
+
+def max_element(mat):
+    dup = []
+    for k in mat:
+        for i in k:
+            dup.append(i)
+    return max(dup)
+
+def numero_max(mat):
+    a = [0] * 12
+    for k in mat:
+        for i in k:
+            a[indexes[i]] += 1
+    #for n in a:
+    #    n = hex(n)
+    #print(a)
+    return magic(a)
+    
+###########
+# Task 0b #
+###########
+
+"""
+def es_candidato(mat, max_anterior):
+    if max_element == 1:
+        return False
+    if max_element(mat) > max_anterior:
+        return True    
+    es_candidato(mat, max_anterior / 2)
+
+
+        return True
+    else:
+        if es_candidato(mat, max_anterior / 2)
+        return False
+"""
+def es_candidato(mat, max_anterior):
+    if numero_max(mat) > max_anterior:
+        return True
+    else:
+        return False
 #######
 #Task 1a#
 #######
