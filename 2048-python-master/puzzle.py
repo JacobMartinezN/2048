@@ -109,10 +109,14 @@ class GameGrid(Frame):
                 self.dfs()
     ########################
     def key_down(self, event):
-		
+	
         key = repr(event.char)
 
         test = ["'q'"]
+
+        if key == "'g'":
+            print("Generando Greedy")
+            self.Greedy()
 
 	######################
         if key in test:
@@ -121,6 +125,15 @@ class GameGrid(Frame):
 	#######################
         if key in self.commands:
             self.move(key)
+
+    def Greedy(self):
+        pMax = [] #puntaje maximo
+        for c in self.commands:
+
+            
+            
+        
+        
 
 
     def generate_next(self):
