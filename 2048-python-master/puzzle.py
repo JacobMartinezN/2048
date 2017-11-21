@@ -124,7 +124,7 @@ class GameGrid(Frame):
             print("----------------")
             print("Generando Greedy")
             while(game_state(self.matrix)=='not over'):
-                #time.sleep(2)
+                time.sleep(.5)
                 self.greedy()
             
         if key == "'n'":
