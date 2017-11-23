@@ -32,12 +32,12 @@ def magic(numList):         # [1,2,3]
     s = int(s)              # 123
     return s
 
-def max_element(mat):
-    dup = []
-    for k in mat:
-        for i in k:
-            dup.append(i)
-    return max(dup)
+#def max_element(mat):
+ #   dup = []
+  #  for k in mat:
+   #     for i in k:
+    #        dup.append(i)
+    #return max(dup)
 
 def numero_max(mat):
     a = [0] * 12
@@ -53,20 +53,7 @@ def numero_max(mat):
 # Task 0b #
 ###########
 
-"""
-def es_candidato(mat, max_anterior):
-    if max_element == 1:
-        return False
-    if max_element(mat) > max_anterior:
-        return True    
-    es_candidato(mat, max_anterior / 2)
 
-
-        return True
-    else:
-        if es_candidato(mat, max_anterior / 2)
-        return False
-"""
 def es_candidato(mat, max_anterior):
     if numero_max(mat) > max_anterior:
         return True

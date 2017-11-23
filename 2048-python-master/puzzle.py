@@ -143,7 +143,6 @@ class GameGrid(Frame):
         return dummy
     
     def greedy(self):
-        #m_anterior = max_element(self.matrix)
         m_anterior = numero_max(self.matrix)
         print(m_anterior)
         movimientos = []
@@ -151,13 +150,13 @@ class GameGrid(Frame):
             if es_candidato(self.moveT(c), m_anterior):
                 movimientos.append(c)
         if not movimientos:
-            print("Elegido al azar: ")
+            #print("Elegido al azar: ")
             self.move(choice(list(self.commands.keys())))
-            print("Nuevo numero maximo: ", numero_max(self.matrix))
+            #print("Nuevo numero maximo: ", numero_max(self.matrix))
         else:
-            print("Elegido al azar pero no tanto de : ", movimientos)
+            #print("Elegido al azar pero no tanto de : ", movimientos)
             self.move(choice(movimientos))
-            print("Nuevo numero maximo: ", numero_max(self.matrix))
+            #print("Nuevo numero maximo: ", numero_max(self.matrix))
         
     def generate_next(self):
         index = (self.gen(), self.gen())
